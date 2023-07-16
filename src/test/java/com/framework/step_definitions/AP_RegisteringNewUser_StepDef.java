@@ -16,51 +16,140 @@ public class AP_RegisteringNewUser_StepDef {
 
     AP_SignupLogin_Page signupLoginPage = new AP_SignupLogin_Page();
     AP_Signup_Page signupPage = new AP_Signup_Page();
-    Faker faker = new Faker();
 
-    @Given("user goes to the web page and sees Automation Exercise title")
-    public void user_goes_to_the_web_page_and_sees_homepage_of_the_application() {
+    @Given("user is on the web page and sees {string} title")
+    public void user_is_on_the_web_page_and_sees_title(String expectedTitle) {
         Driver.getDriver().get(ConfigReader.getProperty("env"));
-        BrowserUtils.verifyTitle("Automation Exercise");
+        BrowserUtils.verifyTitle(expectedTitle);
     }
-    @When("user clicks SignupLogin button user sees New User Signup! text")
-    public void user_clicks_signup_login_button_user_sees_new_user_signup_text() {
-    signupLoginPage.signupLoginButton.click();
+    @When("user clicks SignupLogin button")
+    public void user_clicks_button() {
+        signupLoginPage.signupLoginButton.click();
     }
-    String name;
-    @When("user enters name and email")
-    public void user_enters_name_and_email() {
-    signupLoginPage.nameSignupInput.sendKeys(faker.name().fullName());
-    name = signupLoginPage.nameSignupInput.getText();
-    signupLoginPage.emailSignupInput.sendKeys(faker.internet().emailAddress());
+    @Then("user sees New User Signup! message")
+    public void user_sees_message() {
+       signupLoginPage.verifyNewUserSignUpMessage();
     }
-    @Then("user clicks Signup button and user sees ENTER ACCOUNT INFORMATION text")
-    public void user_clicks_signup_button_and_user_sees_enter_account_information_text() {
-    signupLoginPage.signupButton.click();
+    @Then("user enters {string} name and {string} email")
+    public void user_enters_name_and_email(String name, String email) {
+       signupLoginPage.enter_name_and_email_to_signup(name, email);
     }
 
-    @Then("user fills out Title, Name, Email, Password, Date of birth")
-    public void user_fills_out_title_name_email_password_date_of_birth() {
-
-
-        if (signupLoginPage.nameSignupInput.getText().startsWith("[a-k]") || signupLoginPage.nameSignupInput.getText().startsWith("[A-K]")){
-            signupPage.radioBtnTitleMrs.click();
-        }else{
-            signupPage.radioBtnTitleMr.click();
-        }
-
-        BrowserUtils.scrollToElement(signupPage.passwordInput);
-        signupPage.passwordInput.sendKeys(faker.internet().password());
-        Select select = new Select(signupPage.dayDropdown);
-        select.selectByVisibleText("24");
-
-        select = new Select(signupPage.monthDropdown);
-        select.selectByVisibleText("September");
-
-        select = new Select(signupPage.yearDropdown);
-        select.selectByVisibleText("1992");
-
+    @Then("user clicks Signup button")
+    public void user_clicks_signup_button() {
+       signupLoginPage.signupButton.click();
     }
+    @Then("user clicks {string} Title")
+    public void user_clicks_title(String genderRadioButton) {
+       signupPage.select_gender_title("mrs");
+    }
+    @Then("user sees {string} in the name input")
+    public void user_sees_in_the_name_input(String expectedName) {
+        signupPage.verify_name_input(expectedName);
+    }
+
+    @Then("user sees {string} in the email input")
+    public void user_sees_in_the_email_input(String expectedEmail) {
+        signupPage.verify_email_input(expectedEmail);
+    }
+
+
+    @Then("user enters {string} password")
+    public void user_enters(String password) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("user selects date of birth {string}")
+    public void user_enters_DOB(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("user selects {string} checkbox")
+    public void user_selects_checkbox(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("user enters {string} first name")
+    public void user_enters_first_name(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("user enters {string} last name")
+    public void user_enters_last_name(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("user enters {string} company")
+    public void user_enters_company(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("user enters {string} address")
+    public void user_enters_address(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("user enters {string} address2")
+    public void user_enters_address2(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("user selects {string} country")
+    public void user_selects_country(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("user enters {string} state")
+    public void user_enters_state(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("user enters {string} city")
+    public void user_enters_city(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("user enters {string} zipcode")
+    public void user_enters_zipcode(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("user enters {string} Mobile Number")
+    public void user_enters_mobile_number(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Then("user clicks Create Account button")
+    public void user_clicks_create_account_button() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("user clicks Delete Account button")
+    public void user_clicks_delete_account_button() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("user clicks Continue button")
+    public void user_clicks_continue_button() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("user sees {string} message")
+    public void user_sees_account_deleted_message(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Then("user clicks Continue")
+    public void user_clicks_continue() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+
+
+   /*
     @Then("user selects Sign up for our newsletter! checkbox")
     public void user_selects_sign_up_for_our_newsletter_checkbox() {
         BrowserUtils.selectCheckBox(signupPage.newsletterCheckbox,true);
@@ -97,27 +186,10 @@ public class AP_RegisteringNewUser_StepDef {
         signupPage.mobileNumberInput.sendKeys(faker.number().digits(10));
 
     }
-    @Then("user clicks Create Account button and sees ACCOUNT CREATED! text")
-    public void user_clicks_create_account_button_and_sees_account_created_text() {
-        signupPage.createAccountButton.click();
-        Assert.assertTrue(signupPage.accountCreatedMessage.isDisplayed());
-    }
-    @Then("user clicks Continue button and sees Logged in as username is visible")
-    public void user_clicks_continue_button_and_sees_logged_in_as_username_is_visible() {
 
-        signupPage.continueButton.click();
-        Assert.assertEquals(name,signupLoginPage.loggedInAsName.getText());
+    */
 
 
-    }
-    @Then("user clicks Delete Account button and sees ACCOUNT DELETED! text is displayed")
-    public void user_clicks_delete_account_button_and_sees_account_deleted_text_is_displayed() {
-
-    }
-    @Then("user clicks Continue")
-    public void user_clicks_continue() {
-
-    }
 
 
 }

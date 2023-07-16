@@ -1,6 +1,7 @@
 package com.framework.pages;
 
 import com.framework.utilities.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -15,6 +16,12 @@ public class AP_Signup_Page extends AP_HomePage {
 
     @FindBy(xpath = "//input[@value='Mrs']")
     public WebElement radioBtnTitleMrs;
+
+    @FindBy(css = "input#name")
+    public WebElement nameInput;
+
+    @FindBy(css = "input#email")
+    public WebElement emailInput;
 
     @FindBy(xpath = "//input[@type='password']")
     public WebElement passwordInput;
@@ -70,8 +77,24 @@ public class AP_Signup_Page extends AP_HomePage {
     @FindBy(linkText = "Continue")
     public WebElement continueButton;
 
-    @FindBy(xpath = "//h2[@data-qa='account-created']")
-    public WebElement accountCreatedMessage;
+    public void select_gender_title(String gender){
+        if (gender.equalsIgnoreCase("mr")){
+            radioBtnTitleMr.click();
+        } else if (gender.equalsIgnoreCase("mrs")) {
+            radioBtnTitleMrs.click();
+        }
+    }
+
+    public void verify_name_input(String expectedName){
+        Assert.assertEquals(expectedName, nameInput.getText());
+    }
+
+    public void verify_email_input(String expectedEmail){
+        Assert.assertEquals(expectedEmail, emailInput.getText());
+
+    }
+
+
 
 
 
