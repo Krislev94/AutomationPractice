@@ -55,9 +55,8 @@ public class AP_RegisteringNewUser_StepDef {
 
 
     @Then("user enters {string} password")
-    public void user_enters(String password) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void user_enters_password(String password) {
+       signupPage.passwordInput.sendKeys(password);
     }
     @Then("user selects date of birth {string}")
     public void user_enters_DOB(String string) {
