@@ -77,6 +77,9 @@ public class AP_Signup_Page extends AP_HomePage {
     @FindBy(linkText = "Continue")
     public WebElement continueButton;
 
+    @FindBy(xpath = "//h2[.='Enter Account Information']")
+    public WebElement enterAccountInfoMessage;
+
     public void select_gender_title(String gender){
         if (gender.equalsIgnoreCase("mr")){
             radioBtnTitleMr.click();

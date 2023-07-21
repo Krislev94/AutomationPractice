@@ -32,8 +32,8 @@ public class AP_SignupLogin_Page extends AP_HomePage {
     @FindBy(xpath = "//button[.='Login']")
     public WebElement loginButton;
 
-    public void verifyNewUserSignUpMessage(){
-        Assert.assertEquals("New User Sign up text failed","New User Signup!",newUserSignUpMessage.getText());
+    public void verifyMessage(String expectedMessage, WebElement element){
+        Assert.assertEquals("New User Sign up text failed",expectedMessage,element.getText());
     }
 
     public void enter_name_and_email_to_signup(String name, String email){

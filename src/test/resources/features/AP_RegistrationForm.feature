@@ -5,11 +5,11 @@ Feature: Automation Practice registration feature
   Scenario: Registering a new account
     Given user is on the web page and sees "Automation Exercise" title
     When user clicks SignupLogin button
-    Then user sees New User Signup! message
+    Then user sees "New User Signup!" signup message
     And user enters "Linda Holmes" name and "lindaholmes@gmail.com" email
     Then user clicks Signup button
 
-    And user sees "ENTER ACCOUNT INFORMATION" message
+    And user sees "ENTER ACCOUNT INFORMATION" account message
     Then user clicks "Mrs" Title
     And user sees "Linda Holmes" in the name input
     And user sees "lindaholmes@gmail.com" in the email input

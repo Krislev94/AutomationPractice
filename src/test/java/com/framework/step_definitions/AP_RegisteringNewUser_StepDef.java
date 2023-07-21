@@ -26,9 +26,9 @@ public class AP_RegisteringNewUser_StepDef {
     public void user_clicks_button() {
         signupLoginPage.signupLoginButton.click();
     }
-    @Then("user sees New User Signup! message")
-    public void user_sees_message() {
-       signupLoginPage.verifyNewUserSignUpMessage();
+    @Then("user sees {string} signup message")
+    public void user_sees_message(String expectedMessage) {
+       signupLoginPage.verifyMessage(expectedMessage,signupLoginPage.newUserSignUpMessage);
     }
     @Then("user enters {string} name and {string} email")
     public void user_enters_name_and_email(String name, String email) {
@@ -39,9 +39,15 @@ public class AP_RegisteringNewUser_StepDef {
     public void user_clicks_signup_button() {
        signupLoginPage.signupButton.click();
     }
+
+    @Then("user sees {string} account message")
+    public void user_sees_enter_account_info_message(String expectedMessage) {
+        Assert.assertEquals(expectedMessage, signupPage.enterAccountInfoMessage.getText());
+    }
+
     @Then("user clicks {string} Title")
     public void user_clicks_title(String genderRadioButton) {
-       signupPage.select_gender_title("mrs");
+       signupPage.select_gender_title(genderRadioButton);
     }
     @Then("user sees {string} in the name input")
     public void user_sees_in_the_name_input(String expectedName) {
