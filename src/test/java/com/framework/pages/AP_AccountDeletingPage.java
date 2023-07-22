@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class AP_AccountDeletingPage {
 
-    AP_AccountDeletingPage(){
+    public AP_AccountDeletingPage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
 

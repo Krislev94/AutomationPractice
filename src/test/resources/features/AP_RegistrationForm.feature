@@ -31,8 +31,9 @@ Feature: Automation Practice registration feature
 
     Then user sees "ACCOUNT CREATED!" message
     And user clicks Continue button
-    Then user sees "Logged in as Linda Holmes" message
+    Then user sees Logged in as "Linda Holmes" account information
     Then user clicks Delete Account button
-    And user sees "ACCOUNT DELETED!" message
+    And user sees "ACCOUNT DELETED!" confirmation message
     Then user clicks Continue
+    And user is back on the main page
 
